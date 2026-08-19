@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Lista de Orçamentos</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1>Lista de Orçamentos</h1>
+
+    <table>
+        <tr>
+            <th> ID </th>
+            <th>Cliente</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for quotation in quotations %}
+            <tr>
+                <td>{{ quotation.id }}</td>
+                <td>{{ quotation.client }}</td>
+                <td>{{ quotation.created_at.date() }}</td>
+                <td>
+                    <a href="">Delete</a>
+                    <br>
+                    <a href="">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <form actions="/" method="POST">
+        <input type="text" name="client" id="client">
+        <input type="submit" value="Add Task">
+    </form>
+</div> 
+
+{% endblock %}
